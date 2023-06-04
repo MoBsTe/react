@@ -2,10 +2,10 @@ import React from 'react'
 import Add from '../img/addAvatar.png'
 import { auth, storage, db } from '../firebase'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { doc, setDoc } from "firebase/firestore";
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [err, setErr] = useState(false);
@@ -13,7 +13,7 @@ const Register = () => {
         e.preventDefault();
         const displayName = e.target[0].value;
         const email = e.target[1].value;
-        const password = e.target[1].value;
+        const password = e.target[2].value;
         const file = e.target[3].files[0]
 
         try {
@@ -36,7 +36,7 @@ const Register = () => {
                         await setDoc(doc(db, "userChats", res.user.uid), {})
                         e.target[0].value = '';
                         e.target[1].value = '';
-                        e.target[1].value = '';
+                        e.target[2].value = '';
                         e.target[3].files[0] = null;
                     } catch (err) {
                         console.log(err);
@@ -69,7 +69,7 @@ const Register = () => {
                     <button>Sign up</button>
                     {err && <span> Something went wrong</span>}
                 </form>
-                <p>You have an account? Login</p>
+                <p>You have an account? <Link to="/login">Login</Link> </p>
             </div>
         </div>
     )
