@@ -48,7 +48,7 @@ export const Search = () => {
             if (!res.exists()) {
                 await setDoc(doc(db, 'chats', combinedId), { messages: [] });
 
-                await updateDoc(doc(db, 'userChats', currentUser.uid), {
+                await updateDoc(doc(db, 'usersChats', currentUser.uid), {
                     [combinedId + '.userInfo']: {
                         uid: user.uid,
                         displayName: user.displayName,
@@ -56,7 +56,7 @@ export const Search = () => {
                     },
                     [combinedId + '.date']: serverTimestamp(),
                 });
-                await updateDoc(doc(db, 'userChats', user.uid), {
+                await updateDoc(doc(db, 'usersChats', user.uid), {
                     [combinedId + '.userInfo']: {
                         uid: currentUser.uid,
                         displayName: currentUser.displayName,

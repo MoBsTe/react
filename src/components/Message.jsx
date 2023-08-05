@@ -3,7 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
 
 
-export const Messenge = ({ message }) => {
+const Message = ({ message }) => {
     const { currentUser } = useContext(AuthContext);
     const { data } = useContext(ChatContext);
 
@@ -33,5 +33,7 @@ export const Messenge = ({ message }) => {
                     <img src={message.img} alt="" />}
             </div>
         </div>
-    )
+    );
 }
+
+export default Message;

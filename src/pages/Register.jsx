@@ -33,7 +33,7 @@ const Register = () => {
                             photoURL: downloadURL,
                         });
 
-                        await setDoc(doc(db, "userChats", res.user.uid), {})
+                        await setDoc(doc(db, "usersChats", res.user.uid), {})
                         e.target[0].value = '';
                         e.target[1].value = '';
                         e.target[2].value = '';

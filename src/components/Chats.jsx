@@ -19,7 +19,7 @@ export const Chats = () => {
                 unsub();
             };
         };
-        currentUser.uis && getChats();
+        currentUser.uid && getChats();
     }, [currentUser.uid]);
 
 
@@ -28,8 +28,8 @@ export const Chats = () => {
     }
 
     return (
-        <div className='chats'>
-            {Object.entries(chats)?.sort((a, b) => b[1].data).map((chat) => (
+        <div className="chats">
+            {Object.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map((chat) => (
                 <div className='userChat'
                     key={chat[0]}
                     onClick={() => handleSelect(chat[1].userInfo)}>
@@ -43,3 +43,8 @@ export const Chats = () => {
         </div>
     )
 }
+
+
+
+
+

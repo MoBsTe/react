@@ -54,14 +54,14 @@ export const Input = () => {
                 }),
             });
         }
-        await updateDoc(doc(db, 'userChats', currentUser.uid), {
+        await updateDoc(doc(db, 'usersChats', currentUser.uid), {
             [data.chatId + '.lastMessage']: {
                 text,
             },
             [data.chatId + '.date']: serverTimestamp(),
         });
 
-        await updateDoc(doc(db, 'userChats', data.user.uid), {
+        await updateDoc(doc(db, 'usersChats', data.user.uid), {
             [data.chatId + '.lastMessage']: {
                 text,
             },
